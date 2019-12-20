@@ -169,20 +169,19 @@ class Assessment {
             this.jobs = Array.from(jobSet)
             this.managers = Array.from(managerSet)
     
-            // console.log(this.regions)
-            // console.log(this.departments)
-            // console.log(this.locations)
-            // console.log(this.skills)
-            // console.log(this.skillAreas)
-            // console.log(this.jobFunctions)
-            // console.log(this.jobs)
-            // console.log(this.managers)
         }
 
         //private
         this.usersByJobFunction = function(jobFunction){
             return this.users.filter(function(e){
                 return e.job_function==jobFunction;
+            })
+        }
+
+        //private
+        this.usersBySkillAreas = function(skillAreas){
+            return this.users.filter(function(e){
+                return e.skill_area==skillAreas;
             })
         }
 
@@ -215,6 +214,48 @@ class Assessment {
         }
 
         this.getBubbleSeries = function(assessmentFilters, bubbleCharType){
+
+            //if bubbleCharType=='jobs'
+            // group series by job
+            //Bubble ('job', f(hackett,manager,user),  )
+          
+        //  let users = this.usersBySkillAreas(jobFunction);
+
+            let rawSeries = [];
+    
+            this.users.forEach(user =>{
+                let key = user.skill_area
+                if (rawSeries[key]==null)
+                {
+                    rawSeries.push({
+                        name: user.skill_area,
+                        x : (user.manager_value + user.user_value)/2,
+                        y : user.hacket_value,
+                        count :  1,
+                        type : 'bubble'                        
+                    });
+                    }else{
+                        rawSeries[key].count++;
+                        rawSeries[key].x = user.hacket_value;
+                        rawSeries[key].y = user.manager_value;
+                    }
+                });
+
+            let bubbleSeries = {
+                series: [],
+                maxY:100,
+                minY:-100
+            }
+
+            rawSeries.forEach(element =>{
+               
+                bubbleSeries.series.push({
+                    type: element.type,
+                    values: [ [element.x/element.count,(((element.y/element.x)-1)/element.count)*100,element.count] ]
+                })
+            });
+
+            return bubbleSeries;
 
             return {
                 series: [

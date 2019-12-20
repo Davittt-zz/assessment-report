@@ -6,6 +6,7 @@
 
 function getSelectedItems(selector){
     var e = document.getElementById(selector);
+
     //All Item
     if (e.options[0].selected){
         return Array.from(e.options)

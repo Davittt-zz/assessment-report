@@ -1,4 +1,26 @@
 
+class BubbleSerie {
+    constructor(){
+
+        this.x =  0 
+        this.y = 0
+        this.s = 0
+        this.type = 'bubble'
+        this.text = ''
+        this.count = 0
+
+        this.toValue = function (){
+            return {
+                type: this.type,
+                values: [
+                    [1.92, 30.87, 27]
+                ],
+                text: "Analyst"
+            }
+        }
+    }
+}
+
 class BubblesChart extends Chart{
 
     constructor (){
@@ -118,11 +140,21 @@ class BubblesChart extends Chart{
             this.myConfig.graphset.title.text = title
         }
 
-        this.updateSeries = function(series, maxY, minY){
+        this.updateSeries = function(data){
 
-           this.myConfig.graphset[0].series = [{
+            this.myConfig.graphset[0].scaleY.values = data.minY + ':' + data.maxY +  ':5';
+
+            this.myConfig.graphset[0].series = [{
                 type: "area",
-                values: [[0,maxY],[0.5,maxY],[1,maxY],[1.5,maxY],[1.5,minY],[2,minY],[2.5,minY],[3,minY] ] ,
+                values: [
+                    [0,data.maxY]
+                    ,[0.5,data.maxY]
+                    ,[1,data.maxY]
+                    ,[1.5,data.maxY]
+                    ,[1.5,data.minY]
+                    ,[2,data.minY]
+                    ,[2.5,data.minY]
+                    ,[3,data.minY] ],
                 'contour-on-top': false,
                 text: "Area Chart",
                 lineWidth: 0,
@@ -136,8 +168,7 @@ class BubblesChart extends Chart{
             }];
 
             //Attach series
-            Array.prototype.push.apply(this.myConfig.graphset[0].series,series);
-            console.log(this.myConfig)
+            Array.prototype.push.apply(this.myConfig.graphset[0].series,data.series);
         }
 
     }
