@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
+     <!-- <script rel="stylesheet" src="./styles.css"></script> -->
+</head>
+<body>
+        
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="form-group col-md-1">
+    <label class="text-muted">Organization</label>
+  </div>
+  <div class="form-group col-md-2">
+    <select class="custom-select" id="organizationSelector" name="organization" onchange="onSelectorChange(event)"></select>
+  </div>
+  <div class="form-group col-md-1">
+    <label class="text-muted" >Assessment</label>
+  </div>
+  <div class="form-group col-md-2">
+    <select class="custom-select" id="assessmentSelector" name="assessment" onchange="onSelectorChange(event)"></select>
+  </div>
+</nav>
+
+<form id="myForm">
+        <div class="form-row">
+            <div class="form-group col-md-9">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" id="radar-chart" onclick="onTabSelect(event)"> Radar</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" id="bubbles-chart" onclick="onTabSelect(event)">Bubbles</a>
+                    </li>
+                    <li class="nav-item" >
+                      <a class="nav-link" id="table-chart" onclick="onTabSelect(event)">Table</a>
+                    </li>
+                    <label class="text-muted" ></label>
+                    <li class="nav-item" style="padding-left: 50%;">
+                      <select class="custom-select" id="exportTo"> 
+                        <option selected="selected" >Export to..</option>
+                        <option>JPG</option>
+                        <option>PDF</option>
+                        <option>PNG</option>
+                      </select>
+                    </li>
+                  </ul>
+                  <div id='myChart'></div>
+            </div>
+            <div class="form-group col-md-3" style='padding-right: 5mm'>
+              <div i="radar-filter">
+                <label class="text-muted">Job Functions</label>
+                <select class="custom-select" id="jobFunctionsSelector" name="jobFunctions" onchange="onSelectorChange(event)"></select>
+              </div>
+              <div i="radar-filter">
+                <label class="text-muted">Select Bubbles By</label>
+                <select class="custom-select" id="jobFunctionsSelector" name="" >
+                  <option selected="selected">Jobs</option>
+                  <option>Skecific Skill</option>
+                  <option>Role</option>
+                  <option>Employee</option>
+                </select>
+              </div>
+                <label class="text-muted">Jobs</label>
+                <select class="custom-select" id="jobsSelector" name="jobs" multiple onchange="onSelectorChange(event)"></select>
+                <label class="text-muted">Skill Areas</label>
+                <select class="custom-select" id="skillAreasSelector" name="skillAreas" multiple onchange="onSelectorChange(event)"></select>
+                <label class="text-muted">Skills</label>
+                <select class="custom-select" id="skillsSelector" name="skills" multiple onchange="onSelectorChange(event)"></select>
+                <label class="text-muted">Region</label>
+                <select class="custom-select" id="regionsSelector" name="regions" onchange="onSelectorChange(event)" ></select>
+                <label class="text-muted">Department</label>
+                <select class="custom-select" id="departmentsSelector" name="departments" onchange="onSelectorChange(event)"></select>
+                <label class="text-muted">Location</label>
+                <select class="custom-select" id="locationsSelector" name="locations" onchange="onSelectorChange(event)"></select>          
+                <label class="text-muted">Managers</label>
+                <select class="custom-select" id="managersSelector" name="managers" multiple onchange="onSelectorChange(event)"></select>
+            </div>
+        </div>
+    </form>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="./assessment.html-tools.js"></script>
+    <script src="./assessment.js"></script>
+    <script src="./assessment.menu.js"></script>
+    <script src="./chart.js"></script>
+    <script src="./chart.radar.js"></script>
+    <script src="./chart.bubbles.js"></script>
+    <script src="./main.js"></script> 
+</body>
+</html>
