@@ -213,5 +213,49 @@ class Assessment {
 
             return jobFunctionSeries;
         }
+
+        this.getBubbleSeries = function(assessmentFilters, bubbleCharType){
+
+            return {
+                series: [
+                {
+                    type: 'bubble',
+                    values: [
+                        [1.92, 30.87, 27]
+                    ],
+                    text: "Analyst"
+                },
+                {
+                    type: 'bubble',
+                    values: [
+                        [1.92, 0.87, 97]
+                    ],
+                    text: "Category Owner"
+                },
+                {
+                    type: 'bubble',
+                    values: [
+                        [0.19, -15.95, 16]
+                    ],
+                    text: "Sourcing Manager"
+                },
+                {
+                    type: 'bubble',
+                    values: [
+                        [1.59, 55.95, 120]
+                    ],
+                    text: "SRM Program Manager"
+                },
+                {
+                    type: 'bubble',
+                    values: [
+                        [1.59, 5.95, 350]
+                    ],
+                    text: "Buyer, Level 1 ('Junior Buyer')"
+                }], 
+                maxY: 120,
+                minY:-120
+            }
+        }
     }
 }
